@@ -1,36 +1,27 @@
 // Transpilation pipeline
 
-import ts from "typescript"
+import swc from "@swc/core"
+import { writeFile } from "node:fs/promises"
 
-const transpile = (fileNames: string[], options: ts.CompilerOptions): void => {
-  const program = ts.createProgram(fileNames, options)
-  const emitResult = program.emit()
-
-  const allDiagnostics = ts
-    .getPreEmitDiagnostics(program)
-    .concat(emitResult.diagnostics)
-
-  allDiagnostics.forEach((diagnostic) => {
-    if (diagnostic.file) {
-      const { line, character } = ts.getLineAndCharacterOfPosition(
-        diagnostic.file,
-        diagnostic.start!
-      )
-      const message = ts.flattenDiagnosticMessageText(
-        diagnostic.messageText,
-        "\n"
-      )
-      console.log(
-        `${diagnostic.file.fileName} (${line + 1},${character + 1}): ${message}`
-      )
-    } else {
-      console.log(ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n"))
-    }
+const transpile = async (filename: string): Promise<void> => {
+  const transformed = await swc.transformFile(filename, {
+    jsc: {
+      parser: {
+        syntax: "typescript",
+        tsx: true,
+      },
+      transform: {
+        react: {
+          runtime: "automatic",
+          importSource: "soar",
+        },
+      },
+    },
   })
 
-  const exitCode = emitResult.emitSkipped ? 1 : 0
-  console.log(`Process exiting with code '${exitCode}'.`)
-  process.exit(exitCode)
+  const outputFilename = filename.replace(/\.(ts|tsx)$/i, ".js")
+
+  await writeFile(outputFilename, transformed.code)
 }
 
 export default transpile

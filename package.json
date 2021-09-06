@@ -20,6 +20,7 @@
   "author": "Lucas Yunkyu Lee <me@luc.li>",
   "license": "MIT",
   "dependencies": {
+    "@swc/core": "^1.2.84",
     "typescript": "^4.3.5"
   },
   "devDependencies": {
@@ -46,6 +47,6 @@
     "./jsx-runtime": "./jsx-runtime/index.js"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14.8.0"
   }
 }

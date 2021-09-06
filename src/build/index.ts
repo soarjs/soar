@@ -1,8 +1,7 @@
-import ts from "typescript"
 import transpile from "./transpile.js"
 
-const build = (files: string[], options: ts.CompilerOptions): void => {
-  transpile(files, options)
+const build = async (file: string): Promise<void> => {
+  await transpile(file)
 }
 
 export default build
