@@ -1,10 +1,11 @@
 // Transpilation pipeline
 
 import swc from "@swc/core"
-import { writeFile } from "node:fs/promises"
+import { mkdir, writeFile } from "node:fs/promises"
+import { dirname } from "node:path"
 
-const transpile = async (filename: string): Promise<void> => {
-  const transformed = await swc.transformFile(filename, {
+const transpile = async (inPath: string, outPath: string): Promise<void> => {
+  const transformed = await swc.transformFile(inPath, {
     jsc: {
       parser: {
         syntax: "typescript",
@@ -19,9 +20,8 @@ const transpile = async (filename: string): Promise<void> => {
     },
   })
 
-  const outputFilename = filename.replace(/\.(ts|tsx)$/i, ".js")
-
-  await writeFile(outputFilename, transformed.code)
+  await mkdir(dirname(outPath), { recursive: true })
+  await writeFile(outPath, transformed.code)
 }
 
 export default transpile
