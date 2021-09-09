@@ -11,10 +11,11 @@ const build = async (): Promise<void> => {
   const matchExts = [".ts", ".tsx", ".js", ".jsx"]
 
   const files = await glob(
-    matchExts.map((ext) => `**/*${ext})|`, {
+    matchExts.map((ext) => `**/*${ext}`),
+    {
       dot: false,
       ignore: ["node_modules/**/*", ".soar/**/*"],
-    })
+    }
   )
 
   Promise.all(
