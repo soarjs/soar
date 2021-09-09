@@ -1,8 +1,8 @@
 import { generateBuildDir } from "./manage-build-dir.js"
 import transpile from "./transpile.js"
 import glob from "fast-glob"
-import { distDir, outDir } from "./config.js"
-import { join, extname, dirname } from "node:path"
+import { distDir, outDir, pagesDir } from "./config.js"
+import { join, dirname } from "node:path"
 
 import { replaceExt } from "./utils.js"
 import { cwd } from "node:process"
@@ -20,24 +20,31 @@ const build = async (): Promise<void> => {
     }
   )
 
-  const transpiled = await Promise.all(
+  await Promise.all(
     // transpiling loop
-    files
-      .filter((file) => matchExts.includes(extname(file)))
-      .map((file) => {
-        const path = join(outDir, replaceExt(file, ".js"))
-        transpile(file, path)
-        return path
-      })
+    files.map((file) => {
+      const path = join(outDir, replaceExt(file, ".js"))
+      return transpile(file, path)
+    })
+  )
+
+  const pages = await glob(
+    matchExts.map((ext) => `**/*${ext}`),
+    {
+      dot: false,
+      cwd: join(cwd(), pagesDir),
+    }
   )
 
   const built = (
     await Promise.all(
       // rendering loop
-      transpiled.map(async (file) => {
-        const pageFn = await import(join(cwd(), file))
+      pages.map(async (page) => {
+        const pageFn = await import(
+          join(cwd(), outDir, pagesDir, replaceExt(page, ".js"))
+        )
         if (typeof pageFn.default === "function") {
-          const path = join(distDir, replaceExt(file, ".html"))
+          const path = join(distDir, replaceExt(page, ".html"))
           await mkdir(dirname(path), { recursive: true })
           await writeFile(path, pageFn.default())
           return path
