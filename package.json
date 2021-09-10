@@ -6,6 +6,11 @@
   "types": "lib/index.d.ts",
   "type": "module",
   "bin": "lib/cli/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soarjs/soar.git"
+  },
+  "homepage": "https://github.com/soarjs/soar",
   "scripts": {
     "build": "tsc",
     "format": "prettier . --write",
