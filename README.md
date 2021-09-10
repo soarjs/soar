@@ -1,5 +1,7 @@
 <div align="center">
 
+![soar](/banner.png)
+
 # Soar
 
 **Sensible static sites.** Power to the developer, speed to the user.
