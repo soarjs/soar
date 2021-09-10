@@ -4,6 +4,8 @@
 
 **Sensible static sites.** Power to the developer, speed to the user.
 
+![npm](https://img.shields.io/npm/v/soar) ![weekly downloads](https://img.shields.io/npm/dw/soar)
+
 </div>
 
 A static site generator that builds JS-free static pages from JSX templates. All the power of modern web development without any of the bloat. _Unstable API, under active development._
