@@ -1,7 +1,7 @@
 {
   "name": "soar",
   "version": "0.1.0",
-  "description": "A modern static site generator",
+  "description": "Sensible static sites.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "type": "module",
