@@ -1,3 +1,1 @@
-import build from "./build/index.js"
-
-await build()
+export { default as build } from "./build/index.js"
