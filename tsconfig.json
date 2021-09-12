@@ -14,8 +14,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "soar",
     "paths": {
-      "soar": ["./"],
+      "soar": ["./lib"],
       "soar/jsx-runtime": ["./jsx-runtime"]
     }
   },

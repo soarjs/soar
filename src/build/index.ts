@@ -7,6 +7,7 @@ import { join, dirname } from "node:path"
 import { replaceExt } from "./utils.js"
 import { cwd } from "node:process"
 import { mkdir, writeFile } from "node:fs/promises"
+import html from "../html.js"
 
 const build = async (): Promise<void> => {
   await generateBuildDir()
@@ -46,7 +47,8 @@ const build = async (): Promise<void> => {
         if (typeof pageFn.default === "function") {
           const path = join(distDir, replaceExt(page, ".html"))
           await mkdir(dirname(path), { recursive: true })
-          await writeFile(path, pageFn.default())
+          const pagecContents: string = pageFn.default()
+          await writeFile(path, html(pagecContents))
           return path
         }
       })
