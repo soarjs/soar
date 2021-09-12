@@ -41,6 +41,10 @@ describe("jsx rendering", () => {
       </span>
     ).toEqual(`<span class="class" id="id">child</span>`)
   })
+
+  test("void element", () => {
+    expect(<meta name="name" />).toEqual(`<meta name="name" />`)
+  })
 })
 
 export {}
