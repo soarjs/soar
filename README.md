@@ -52,14 +52,23 @@ export default () => (
 
 ## Roadmap
 
-Just a vague list for now.
-
-- [x] Basic page building
-- [x] Basic JSX rendering
-- [ ] GitHub Actions CI/CD
-- [ ] Dev server
-- [ ] Styling support
-- [ ] Website
-- [ ] Plugin system
-- [ ] Image optimization component
-- [ ] SEO component
+- **Phase 1: Basic implementation**
+  - [x] Basic page building
+  - [x] Basic JSX rendering
+  - [ ] User configuration
+  - [ ] GitHub Actions CI/CD
+  - [ ] Full CLI
+- **Phase 2: Production ready**
+  - [ ] Project website
+  - [ ] CSS support
+  - [ ] JS support
+  - [ ] Dev server
+  - [ ] Plugin system
+  - [ ] Markdown plugin
+- **Phase 3: Fully featured**
+  - [ ] Native ESM based HMR
+  - [ ] CMS plugin
+  - [ ] DOM manipulation API
+  - [ ] Image optimization plugin
+  - [ ] Netlify/Vercel/etc support
+  - [ ] Serverless functions?
