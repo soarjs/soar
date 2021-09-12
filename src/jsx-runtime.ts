@@ -10,10 +10,10 @@ const renderProps = (props: DefaultProps) =>
     .join("")
 
 const jsx = (t: string, o: DefaultProps): string => {
-  if (typeof o.children === "string") {
-    return `<${t}${renderProps(o)}>${o.children}</${t}>`
-  } else if (Array.isArray(o.children)) {
+  if (Array.isArray(o.children)) {
     return `<${t}${renderProps(o)}>${o.children.join("")}</${t}>`
+  } else if (typeof o.children?.toString() === "string") {
+    return `<${t}${renderProps(o)}>${o.children}</${t}>`
   } else return `<${t}${renderProps(o)}></${t}>`
 }
 

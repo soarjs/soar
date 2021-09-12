@@ -3,6 +3,14 @@ describe("jsx rendering", () => {
     expect(<span>child</span>).toEqual("<span>child</span>")
   })
 
+  test("number child", () => {
+    expect(<span>{1 + 1}</span>).toEqual("<span>2</span>")
+  })
+
+  test("null child", () => {
+    expect(<span>{null}</span>).toEqual("<span></span>")
+  })
+
   test("nested children", () => {
     expect(
       <div>
