@@ -1,6 +1,6 @@
 <div align="center">
 
-![soar](/banner.png)
+![soar](https://github.com/soarjs/soar/raw/main/banner.png)
 
 # Soar
 
