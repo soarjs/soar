@@ -15,7 +15,8 @@
     "build": "tsc",
     "format": "prettier . --write",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "postversion": "git tag -a v$npm_package_version -m $npm_package_version"
   },
   "keywords": [
     "generator",
