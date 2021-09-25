@@ -1,6 +1,6 @@
 import { mkdir, readdir, writeFile, lstat, copyFile } from "node:fs/promises"
 import { spawn } from "node:child_process"
-import { basename, dirname, join, resolve } from "node:path"
+import { basename, join, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 
 const init = async (dir: string): Promise<void> => {
@@ -40,7 +40,7 @@ const install = async (dir: string) => {
   const templateDir = resolve(fileURLToPath(import.meta.url), "../template")
   console.log(templateDir)
 
-  // await cp(templateDir, dir)
+  await cp(templateDir, dir)
 
   const ls = spawn(command, ["install", "--save", dependencies.join(" ")], {
     cwd: dir,
