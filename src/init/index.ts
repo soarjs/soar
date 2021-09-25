@@ -39,7 +39,6 @@ const install = async (dir: string) => {
   )
 
   const templateDir = resolve(fileURLToPath(import.meta.url), "../template")
-  console.log(templateDir)
 
   await cp(templateDir, dir)
 
