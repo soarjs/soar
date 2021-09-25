@@ -28,7 +28,7 @@
   "license": "MIT",
   "dependencies": {
     "@swc/core": "^1.2.84",
-    "commander": "^7.2.0",
+    "commander": "^8.2.0",
     "fast-glob": "^3.2.7",
     "typescript": "^4.3.5"
   },
