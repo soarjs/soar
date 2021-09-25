@@ -20,7 +20,18 @@ A static site generator that builds JS-free static pages from JSX templates. All
 
 ## Usage
 
-### Installation
+### Initialize
+
+#### Automatic
+
+Automatically initializes a Soar project into `directory`.
+
+```shell
+# replace directory accordingly
+$ npx soar init directory
+```
+
+#### Manual
 
 Requires `{ "type": "module" }` in `package.json` and `node>=14.14.0`.
 
