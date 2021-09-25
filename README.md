@@ -22,7 +22,7 @@ A static site generator that builds JS-free static pages from JSX templates. All
 
 ### Installation
 
-Requires `{ "type": "module" }` in `package.json` and `node>=14.8.0`.
+Requires `{ "type": "module" }` in `package.json` and `node>=14.14.0`.
 
 ```shell
 $ npm i soar
