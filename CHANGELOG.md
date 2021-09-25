@@ -1,6 +1,11 @@
 # Changelog
 
-## 0.3.0 (latest)
+## 0.4.0 (latest)
+
+- Implement project initialization
+  - `soar init <directory>`
+
+## 0.3.0
 
 - Improve JSX to HTML rendering
   - HTML properties
