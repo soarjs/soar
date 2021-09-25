@@ -24,6 +24,7 @@ const install = async (dir: string) => {
   const packageJson = {
     name: basename(dir),
     version: "0.1.0",
+    type: "module",
     scripts: {
       build: "soar build",
     },
