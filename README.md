@@ -6,7 +6,7 @@
 
 **Sensible static sites.** Power to the developer, speed to the user.
 
-![npm](https://img.shields.io/npm/v/soar) ![weekly downloads](https://img.shields.io/npm/dw/soar)
+![npm](https://img.shields.io/npm/v/soar) ![weekly downloads](https://img.shields.io/npm/dw/soar) ![test ci](https://github.com/soarjs/soar/workflows/Test%20CI/badge.svg) ![lint ci](https://github.com/soarjs/soar/workflows/Lint%20CI/badge.svg)
 
 </div>
 
