@@ -1,0 +1,29 @@
+name: Lint CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint TS/JS
+        run: npm run lint:es
+
+      - name: Lint Code Style
+        run: npm run lint:style

@@ -18,6 +18,10 @@
     "format": "prettier . --write",
     "prepare": "husky install",
     "test": "jest",
+    "lint": "npm-run-all --parallel lint:es lint:style",
+    "lint:es": "eslint --ext .ts,.tsx,.js,.jsx",
+    "lint:style": "prettier . --check",
+    "type-check": "tsc --noEmit",
     "postversion": "git tag -a v$npm_package_version -m $npm_package_version"
   },
   "keywords": [
