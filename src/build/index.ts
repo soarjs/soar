@@ -8,6 +8,10 @@ import { replaceExt } from "./utils.js"
 import { cwd } from "node:process"
 import { mkdir, writeFile } from "node:fs/promises"
 import html from "../html.js"
+import { parseHTML } from "linkedom"
+import { DocumentFragment } from "linkedom"
+import { jsx, render } from "../jsx-runtime.js"
+import { Element } from "jsx.js"
 
 const build = async (): Promise<void> => {
   await generateBuildDir()
@@ -41,14 +45,16 @@ const build = async (): Promise<void> => {
     await Promise.all(
       // rendering loop
       pages.map(async (page) => {
-        const pageFn = await import(
+        const pageFn: { default: () => Element } = await import(
           join(cwd(), outDir, pagesDir, replaceExt(page, ".js"))
         )
+
         if (typeof pageFn.default === "function") {
           const path = join(distDir, replaceExt(page, ".html"))
           await mkdir(dirname(path), { recursive: true })
-          const pagecContents: string = pageFn.default()
-          await writeFile(path, html(pagecContents))
+          const pageContents: Element = pageFn.default.call(this)
+          const { document } = parseHTML(html)
+          await writeFile(path, render(pageContents, document))
           return path
         }
       })

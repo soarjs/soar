@@ -36,6 +36,7 @@
     "@swc/core": "^1.2.84",
     "commander": "^8.2.0",
     "fast-glob": "^3.2.7",
+    "linkedom": "^0.12.1",
     "typescript": "^4.3.5"
   },
   "devDependencies": {
